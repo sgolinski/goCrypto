@@ -32,7 +32,14 @@ func main() {
 
 		msg, err := tx.AsMessage(types.NewEIP155Signer(chainID), nil)
 
-		fmt.Println(msg)
+		fmt.Println(msg.From().String())
+		fmt.Println(msg.To().String())
+		fmt.Println(msg.Gas())
+		fmt.Println(msg.GasPrice().String())
+		fmt.Println(msg.Value().String())
+		fmt.Println(msg.GasFeeCap().String())
+		fmt.Println(msg.IsFake())
+		fmt.Println(msg.AccessList().StorageKeys())
 
 		if err != nil {
 			log.Fatal(err)
