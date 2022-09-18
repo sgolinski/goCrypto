@@ -14,6 +14,6 @@ func main() {
 
 	block, _ := client.BlockByNumber(context.Background(), big.NewInt(int64(blockNumber)))
 
-	fmt.Println(block)
+	fmt.Println(block.Transactions())
 
 }
