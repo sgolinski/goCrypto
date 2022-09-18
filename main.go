@@ -40,7 +40,12 @@ func main() {
 		fmt.Print("To ")
 		fmt.Println(msg.To().String())
 		fmt.Println("Txn " + tx.Hash().String())
+		fmt.Print("Gas ")
 		fmt.Print(tx.Gas())
+		fmt.Println(" gwei")
+
+		fmt.Print("Cost ")
+		fmt.Print(tx.Cost().String())
 		fmt.Println(" gwei")
 		if err != nil {
 			log.Fatal(err)
