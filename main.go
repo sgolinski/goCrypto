@@ -46,7 +46,7 @@ func main() {
 		}
 
 		address := common.HexToAddress(receipt.ContractAddress.Hex())
-		fmt.Println(receipt.ContractAddress)
+		fmt.Println(receipt.ContractAddress.Value())
 		fmt.Println(address)
 	}
 
