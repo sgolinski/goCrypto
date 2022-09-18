@@ -3,7 +3,6 @@ package main
 import (
 	"context"
 	"fmt"
-	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/core/types"
 	"github.com/ethereum/go-ethereum/ethclient"
 	"log"
@@ -55,10 +54,9 @@ func main() {
 			fmt.Println(lg.Removed)
 
 		}
-
-		address := common.HexToAddress(receipt.ContractAddress.Hex())
-		fmt.Println(receipt)
-		fmt.Println(address)
+		fmt.Println()
+		fmt.Println()
+		fmt.Println()
 	}
 
 }
