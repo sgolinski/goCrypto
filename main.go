@@ -17,7 +17,16 @@ func main() {
 	//var transactions []types.Transaction
 
 	for _, txn := range block.Transactions() {
-		fmt.Println(txn)
+		fmt.Println(txn.Hash().String())
+		fmt.Println(txn.Value().String())
+		fmt.Println(txn.AccessList().StorageKeys())
+		fmt.Println(txn.Nonce())
+		fmt.Println(txn.To().String())
+		fmt.Println(txn.GasPrice().String())
+		fmt.Println(txn.Type())
+		fmt.Println(txn.ChainId().String())
+		fmt.Println(txn.Cost().String())
+		fmt.Println(txn.Data())
 	}
 
 }
