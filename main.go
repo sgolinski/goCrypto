@@ -17,6 +17,9 @@ func main() {
 	block, _ := client.BlockByNumber(context.Background(), number)
 
 	for _, txn := range block.Transactions() {
-		fmt.Println(txn.RawSignatureValues())
+		v, r, s := txn.RawSignatureValues()
+		fmt.Println(v)
+		fmt.Println(r)
+		fmt.Println(s)
 	}
 }
