@@ -21,14 +21,20 @@ func main() {
 	latestBlock := modules.GetLatestBlock(*client)
 	transactions := latestBlock.Transactions
 
-	for _, d := range transactions {
+	for _, t := range transactions {
 
-		fmt.Println(d.Hash)
-		fmt.Println(d.Value)
-		fmt.Println(d.To)
-		fmt.Println(d.Gas)
-		fmt.Println(d.GasPrice)
-		fmt.Println()
+		fmt.Println(t.Hash)
+		fmt.Println(t.Value)
+		fmt.Println(t.From)
+		fmt.Println(t.To)
+		fmt.Println(t.Gas)
+		fmt.Println(t.GasPrice)
+		fmt.Println(t.R)
+		fmt.Println(t.S)
+		fmt.Println(t.TransactionIndex)
+		fmt.Println(t.Input)
+		fmt.Println(t.Nonce)
+		fmt.Println(t.Pending)
 
 	}
 
