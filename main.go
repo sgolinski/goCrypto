@@ -18,8 +18,9 @@ func main() {
 
 	for _, txn := range block.Transactions() {
 		v, r, s := txn.RawSignatureValues()
-		fmt.Println(v)
+		fmt.Println(v.MarshalText())
 		fmt.Println(r)
 		fmt.Println(s)
+
 	}
 }
