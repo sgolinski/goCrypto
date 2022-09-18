@@ -10,6 +10,7 @@ import (
 	"os"
 )
 
+// 0x10ED43C718714eb63d5aA57B78B54704E256024E panckake swap router v2
 func main() {
 	client, err := ethclient.Dial("http://localhost:8545")
 	if err != nil {
@@ -33,7 +34,9 @@ func main() {
 		msg, err := tx.AsMessage(types.NewEIP155Signer(chainID), nil)
 
 		fmt.Println("Message")
+		fmt.Print("From ")
 		fmt.Println(msg.From().String())
+		fmt.Print("To ")
 		fmt.Println(msg.To().String())
 		fmt.Println("Txn " + tx.Hash().String())
 
