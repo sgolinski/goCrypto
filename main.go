@@ -58,7 +58,8 @@ func main() {
 			fmt.Println(lg.Address)
 			address := lg.Address
 			contract, _ := client.CodeAt(context.Background(), address, nil)
-			fmt.Println(contract)
+			bloom := types.BytesToBloom(contract)
+			fmt.Println(bloom)
 		}
 
 		fmt.Println()
