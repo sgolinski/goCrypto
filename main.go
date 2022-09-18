@@ -11,6 +11,7 @@ import (
 )
 
 // 0x10ED43C718714eb63d5aA57B78B54704E256024E panckake swap router v2
+// wei = 1000000000000000000
 func main() {
 	client, err := ethclient.Dial("http://localhost:8545")
 	if err != nil {
@@ -39,7 +40,8 @@ func main() {
 		fmt.Print("To ")
 		fmt.Println(msg.To().String())
 		fmt.Println("Txn " + tx.Hash().String())
-
+		fmt.Print(tx.Gas() / 1000000000000000000)
+		fmt.Println(" bnb")
 		if err != nil {
 			log.Fatal(err)
 		}
