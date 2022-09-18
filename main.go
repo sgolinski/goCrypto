@@ -42,7 +42,7 @@ func main() {
 
 		// cost is real value of transaction
 		fmt.Print("Cost ")
-		fmt.Print(tx.Cost().String())
+		fmt.Print(float64(tx.Cost().Uint64() / 1000000000000000000))
 		fmt.Println(" gwei")
 		if err != nil {
 			log.Fatal(err)
@@ -58,7 +58,6 @@ func main() {
 			fmt.Println(lg.Address)
 			address := lg.Address
 			contract, _ := client.BalanceAt(context.Background(), address, nil)
-
 			fmt.Println(contract)
 		}
 

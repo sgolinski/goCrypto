@@ -74,3 +74,10 @@ type Error struct {
 	Code    uint64 `json:"code"`
 	Message string `json:"message"`
 }
+
+type Alert struct {
+	From  string
+	To    string
+	Token string
+	Cost  uint64
+}
