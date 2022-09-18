@@ -18,8 +18,18 @@ func main() {
 		fmt.Println(err)
 	}
 
-	transaction := modules.GetLatestBlock(*client)
-	fmt.Println(transaction)
+	latestBlock := modules.GetLatestBlock(*client)
+	transactions := latestBlock.Transactions
+
+	for _, d := range transactions {
+
+		fmt.Println(d.Hash)
+		fmt.Println(d.Value)
+		fmt.Println(d.To)
+		fmt.Println(d.Gas)
+		fmt.Println(d.GasPrice)
+
+	}
 
 	if err != nil {
 		fmt.Println(err)
