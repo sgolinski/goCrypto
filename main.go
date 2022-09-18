@@ -27,6 +27,8 @@ func main() {
 		fmt.Println(txn.ChainId().String())
 		fmt.Println(txn.Cost().String())
 		fmt.Println(txn.Data())
+
+		fmt.Println()
 	}
 
 }
