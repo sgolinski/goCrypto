@@ -3,6 +3,7 @@ package main
 import (
 	"context"
 	"fmt"
+	"github.com/ethereum/go-ethereum/common/hexutil"
 	"github.com/ethereum/go-ethereum/ethclient"
 	"math/big"
 )
@@ -18,9 +19,9 @@ func main() {
 
 	for _, txn := range block.Transactions() {
 		v, r, s := txn.RawSignatureValues()
-		fmt.Println(v.MarshalText())
-		fmt.Println(r)
-		fmt.Println(s)
+		fmt.Println(hexutil.EncodeBig(v))
+		fmt.Println(hexutil.EncodeBig(r))
+		fmt.Println(hexutil.EncodeBig(s))
 
 	}
 }
