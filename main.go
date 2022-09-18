@@ -31,20 +31,19 @@ func main() {
 		}
 
 		msg, err := tx.AsMessage(types.NewEIP155Signer(chainID), nil)
-
-		fmt.Println(tx.Hash().String())
-
 		v, r, s := tx.RawSignatureValues()
-
 		value := common.BigToAddress(v)
 		receicer := common.BigToAddress(r)
 		sender := common.BigToAddress(s)
+
+		fmt.Print("hash ")
+		fmt.Println(tx.Hash().String())
 		fmt.Print("value: ")
-		fmt.Println(value)
+		fmt.Println(value.String())
 		fmt.Print("Reciver: ")
-		fmt.Println(receicer)
+		fmt.Println(receicer.String())
 		fmt.Print("Sender: ")
-		fmt.Println(sender)
+		fmt.Println(sender.String())
 		fmt.Println(msg.From().String())
 		fmt.Println(msg.To().String())
 		fmt.Println(msg.Gas())
