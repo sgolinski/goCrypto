@@ -28,6 +28,7 @@ func main() {
 		fmt.Println(d.To)
 		fmt.Println(d.Gas)
 		fmt.Println(d.GasPrice)
+		fmt.Println()
 
 	}
 
