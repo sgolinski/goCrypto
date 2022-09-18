@@ -14,6 +14,10 @@ func main() {
 
 	block, _ := client.BlockByNumber(context.Background(), big.NewInt(int64(blockNumber)))
 
-	fmt.Println(block.Transactions())
+	//var transactions []types.Transaction
+
+	for _, txn := range block.Transactions() {
+		fmt.Println(txn)
+	}
 
 }
