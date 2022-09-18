@@ -142,12 +142,13 @@ func GetTxByHash(client ethclient.Client, hash common.Hash) *Models.Transaction 
 	}
 
 	return &Models.Transaction{
-		Hash:     tx.Hash().String(),
-		Value:    tx.Value().String(),
-		Gas:      tx.Gas(),
-		GasPrice: tx.GasPrice().Uint64(),
-		To:       tx.To().String(),
-		Pending:  pending,
-		Nonce:    tx.Nonce(),
+		Hash:       tx.Hash().String(),
+		Value:      tx.Value().String(),
+		Gas:        tx.Gas(),
+		GasPrice:   tx.GasPrice().Uint64(),
+		To:         tx.To().String(),
+		Pending:    pending,
+		Nonce:      tx.Nonce(),
+		AccessList: tx.AccessList(),
 	}
 }

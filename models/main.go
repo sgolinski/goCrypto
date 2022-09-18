@@ -1,5 +1,7 @@
 package models
 
+import "github.com/ethereum/go-ethereum/core/types"
+
 type Block struct {
 	BlockNumber       int64         `json:"blockNumber"`
 	Timestamp         uint64        `json:"timestamp"`
@@ -27,19 +29,17 @@ blockHash: "0xb00f99f737d3f7ce145a8de3d14e8cdb04e79ae1f1fd3e1cddcab8e8e92400cf",
   value: 800000000000000
 */
 type Transaction struct {
-	BlockNumber      int64  `json:"blockNumber"`
-	From             string `json:"from"`
-	Hash             string `json:"hash"`
-	Value            string `json:"value"`
-	Gas              uint64 `json:"gas"`
-	GasPrice         uint64 `json:"gasPrice"`
-	Input            string `json:"input"`
-	Nonce            uint64 `json:"nonce"`
-	R                string `json:"r"`
-	S                string `json:"s"`
-	To               string `json:"to"`
-	TransactionIndex int8   `json:"transactionIndex"`
-	Pending          bool   `json:"pending"`
+	BlockNumber int64            `json:"blockNumber"`
+	From        string           `json:"from"`
+	Hash        string           `json:"hash"`
+	Value       string           `json:"value"`
+	Gas         uint64           `json:"gas"`
+	GasPrice    uint64           `json:"gasPrice"`
+	Input       string           `json:"input"`
+	Nonce       uint64           `json:"nonce"`
+	To          string           `json:"to"`
+	Pending     bool             `json:"pending"`
+	AccessList  types.AccessList `json:"accessList"`
 }
 
 type TransferEthRequest struct {
