@@ -36,7 +36,8 @@ func main() {
 		fmt.Print("Cost ")
 		fmt.Println(txn.Cost().String())
 		fmt.Print("Data")
-		fmt.Println(txn.UnmarshalBinary(txn.Data()))
+		data := txn.UnmarshalJSON(txn.Data())
+		fmt.Println(data)
 
 		fmt.Println()
 	}
