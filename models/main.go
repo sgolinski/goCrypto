@@ -2,15 +2,6 @@ package models
 
 import "github.com/ethereum/go-ethereum/core/types"
 
-type Block struct {
-	BlockNumber       int64         `json:"blockNumber"`
-	Timestamp         uint64        `json:"timestamp"`
-	Difficulty        uint64        `json:"difficulty"`
-	Hash              string        `json:"hash"`
-	TransactionsCount int           `json:"transactionCount"`
-	Transactions      []Transaction `json:"transactions"`
-}
-
 /*
 blockHash: "0xb00f99f737d3f7ce145a8de3d14e8cdb04e79ae1f1fd3e1cddcab8e8e92400cf",
   blockNumber: 21439247,

@@ -12,27 +12,14 @@ import (
 
 func main() {
 	// Create a client instance to connect to our providr
-	client, err := ethclient.Dial("http://localhost:8545")
+	client, err := ethclient.Dial("http://localhost:7545")
 
 	if err != nil {
 		fmt.Println(err)
 	}
 	latestBlock := modules.GetLatestBlock(*client)
 
-	for _, d := range latestBlock.Transactions {
-		fmt.Print("Acces list")
-		fmt.Println(d.AccessList)
-		fmt.Println("To " + d.To)
-		fmt.Print("Gas ")
-		fmt.Println(d.Gas)
-		fmt.Print("Gas Price ")
-		fmt.Println(d.GasPrice)
-		fmt.Print("Value ")
-		fmt.Println(d.Value)
-		fmt.Print("Nonce ")
-		fmt.Println(d.Nonce)
-		fmt.Println()
-	}
+	fmt.Println(latestBlock)
 
 	if err != nil {
 		fmt.Println(err)
