@@ -20,8 +20,8 @@ func main() {
 	latestBlock := modules.GetLatestBlock(*client)
 
 	for _, d := range latestBlock.Transactions {
-
-		fmt.Println("From " + d.From)
+		fmt.Print("Acces list")
+		fmt.Println(d.AccessList)
 		fmt.Println("To " + d.To)
 		fmt.Print("Gas ")
 		fmt.Println(d.Gas)
