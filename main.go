@@ -3,11 +3,11 @@ package main
 import (
 	"context"
 	"fmt"
+	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/core/types"
+	"github.com/ethereum/go-ethereum/ethclient"
 	"log"
 	"math/big"
-
-	"github.com/ethereum/go-ethereum/ethclient"
 )
 
 func main() {
@@ -33,6 +33,18 @@ func main() {
 		msg, err := tx.AsMessage(types.NewEIP155Signer(chainID), nil)
 
 		fmt.Println(tx.Hash().String())
+
+		v, r, s := tx.RawSignatureValues()
+
+		value := common.BigToAddress(v)
+		receicer := common.BigToAddress(r)
+		sender := common.BigToAddress(s)
+		fmt.Print("value: ")
+		fmt.Println(value)
+		fmt.Print("Reciver: ")
+		fmt.Println(receicer)
+		fmt.Print("Sender: ")
+		fmt.Println(sender)
 		fmt.Println(msg.From().String())
 		fmt.Println(msg.To().String())
 		fmt.Println(msg.Gas())
