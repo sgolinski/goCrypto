@@ -41,7 +41,7 @@ func main() {
 		fmt.Println(msg.GasFeeCap().String())
 		fmt.Println(msg.IsFake())
 		fmt.Println(msg.AccessList().StorageKeys())
-
+		fmt.Println()
 		if err != nil {
 			log.Fatal(err)
 		}
