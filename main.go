@@ -6,7 +6,6 @@ import (
 	"github.com/ethereum/go-ethereum/core/types"
 	"github.com/ethereum/go-ethereum/ethclient"
 	"log"
-	"math"
 	"math/big"
 	"os"
 )
@@ -43,7 +42,9 @@ func main() {
 
 		// cost is real value of transaction
 		fmt.Print("Cost ")
-		fmt.Print(math.Round(float64(tx.Cost().Uint64()*100)) / 100)
+		cost := tx.Cost().Uint64()
+
+		fmt.Print(cost / 1000000000000000000)
 		fmt.Println(" gwei")
 		if err != nil {
 			log.Fatal(err)
