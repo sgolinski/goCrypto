@@ -27,11 +27,7 @@ func main() {
 		fmt.Println(t.Value)
 		fmt.Println(t.From)
 		fmt.Println(t.To)
-		fmt.Println(t.Gas)
-		fmt.Println(t.GasPrice)
-		fmt.Println(t.Input)
-		fmt.Println(t.Nonce)
-		fmt.Println(t.Pending)
+		fmt.Println(t.AccessList)
 
 	}
 
