@@ -14,10 +14,13 @@ func main() {
 	// Create a client instance to connect to our providr
 	client, err := ethclient.Dial("http://localhost:7545")
 
+	if err != nil {
+		fmt.Println(err)
+	}
+
 	transaction := modules.GetLatestBlock(*client)
 	fmt.Println(transaction)
 
-	address := "0xF98F07B74003aE9ed1cB34bce28Cf6294D018C67"
 	balance, _ := modules.GetAddressBalance(*client, address)
 	fmt.Println(balance)
 
