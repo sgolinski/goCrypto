@@ -45,8 +45,19 @@ func main() {
 			log.Fatal(err)
 		}
 
+		for _, lg := range receipt.Logs {
+
+			fmt.Println(lg.Address)
+			fmt.Println(lg.Data)
+			fmt.Println(lg.BlockNumber)
+			fmt.Println(lg.BlockHash.String())
+			fmt.Println(lg.Index)
+			fmt.Println(lg.Removed)
+
+		}
+
 		address := common.HexToAddress(receipt.ContractAddress.Hex())
-		fmt.Println(receipt.ContractAddress.Value())
+		fmt.Println(receipt)
 		fmt.Println(address)
 	}
 
