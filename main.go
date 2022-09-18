@@ -34,7 +34,6 @@ func main() {
 
 		msg, err := tx.AsMessage(types.NewEIP155Signer(chainID), nil)
 
-		fmt.Println("Message")
 		fmt.Print("From ")
 		fmt.Println(msg.From().String())
 		fmt.Print("To ")
@@ -55,18 +54,11 @@ func main() {
 		}
 
 		for _, lg := range receipt.Logs {
-			fmt.Println()
 			fmt.Print("Address ")
 			fmt.Println(lg.Address)
-			fmt.Print("BlockNumber ")
-			fmt.Println(lg.BlockNumber)
-			fmt.Print("BlockHash ")
-			fmt.Println(lg.BlockHash.String())
-			fmt.Print("Index ")
-			fmt.Println(lg.Index)
-			fmt.Print("Removed ")
-			fmt.Println(lg.Removed)
-			fmt.Println()
+			address := lg.Address
+			contract, _ := client.CodeAt(context.Background(), address, nil)
+			fmt.Println(contract)
 		}
 
 		fmt.Println()

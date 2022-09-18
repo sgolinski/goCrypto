@@ -10,7 +10,6 @@ type Block struct {
 	Transactions      []Transaction `json:"transactions"`
 }
 
-// Transaction data structure
 type Transaction struct {
 	Hash     string `json:"hash"`
 	Value    string `json:"value"`
@@ -20,6 +19,14 @@ type Transaction struct {
 	To       string `json:"to"`
 	Pending  bool   `json:"pending"`
 }
+type Log struct {
+	Address     string `json:"address"`
+	BlockNumber int64  `json:"blockNumber"`
+	BlockHash   string `json:"blockHash"`
+	Index       int    `json:"index"`
+	Removed     int    `json:"removed"`
+}
+
 type Receipt struct {
 	Status            string `json:"status"`
 	Type              string `json:"type"`
@@ -29,6 +36,7 @@ type Receipt struct {
 	Bloom             string `json:"bloom"`
 	CumulativeGasUsed uint64 `json:"cumulativeGasUsed"`
 	GasUsed           uint64 `json:"gasUsed"`
+	Logs              []Log  `json:"logs"`
 }
 
 type Message struct {
