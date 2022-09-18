@@ -40,8 +40,8 @@ func main() {
 		fmt.Print("To ")
 		fmt.Println(msg.To().String())
 		fmt.Println("Txn " + tx.Hash().String())
-		fmt.Print(tx.Gas() / 1000000000000000000)
-		fmt.Println(" bnb")
+		fmt.Print(tx.Gas())
+		fmt.Println(" gwei")
 		if err != nil {
 			log.Fatal(err)
 		}
