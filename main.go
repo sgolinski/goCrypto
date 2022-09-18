@@ -35,6 +35,7 @@ func main() {
 		fmt.Println("Message")
 		fmt.Println(msg.From().String())
 		fmt.Println(msg.To().String())
+		fmt.Println("Txn" + tx.Hash().String())
 
 		if err != nil {
 			log.Fatal(err)
