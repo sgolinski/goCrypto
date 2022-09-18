@@ -18,6 +18,13 @@ func main() {
 	block, _ := client.BlockByNumber(context.Background(), number)
 
 	for _, txn := range block.Transactions() {
+
+		hash := txn.Hash().String()
+		fmt.Println("Hash " + hash)
+
+		value := txn.Value().String()
+		fmt.Println("Value " + value)
+
 		v, r, s := txn.RawSignatureValues()
 		fmt.Println(hexutil.EncodeBig(v))
 		fmt.Println(hexutil.EncodeBig(r))
