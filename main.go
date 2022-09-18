@@ -73,7 +73,7 @@ func main() {
 		fmt.Print("Index ")
 		fmt.Println(receipt.TransactionIndex)
 		fmt.Print("Contract ")
-		fmt.Println(receipt.ContractAddress.Hash().String())
+		fmt.Println(receipt.ContractAddress.Hash())
 		fmt.Print("Bloom ")
 		fmt.Println(receipt.Bloom)
 		fmt.Print("Gas used ")
