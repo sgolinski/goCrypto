@@ -36,7 +36,7 @@ func main() {
 		fmt.Print("Cost ")
 		fmt.Println(txn.Cost().String())
 		fmt.Print("Data")
-		data := txn.UnmarshalJSON(txn.Data())
+		data := block.Transaction(txn.Hash())
 		fmt.Println(data)
 
 		fmt.Println()
