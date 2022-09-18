@@ -32,6 +32,7 @@ func main() {
 
 		msg, err := tx.AsMessage(types.NewEIP155Signer(chainID), nil)
 
+		fmt.Println(tx.Hash().String())
 		fmt.Println(msg.From().String())
 		fmt.Println(msg.To().String())
 		fmt.Println(msg.Gas())
