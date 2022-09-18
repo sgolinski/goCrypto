@@ -3,7 +3,6 @@ package main
 import (
 	"context"
 	"fmt"
-	"github.com/ethereum/go-ethereum/common/hexutil"
 	"github.com/ethereum/go-ethereum/ethclient"
 	"math/big"
 )
@@ -19,16 +18,7 @@ func main() {
 
 	for _, txn := range block.Transactions() {
 
-		hash := txn.Hash().String()
-		fmt.Println("Hash " + hash)
-
-		value := txn.Value().String()
-		fmt.Println("Value " + value)
-
-		v, r, s := txn.RawSignatureValues()
-		fmt.Println(hexutil.DecodeUint64(v.String()))
-		fmt.Println(hexutil.DecodeUint64(r.String()))
-		fmt.Println(hexutil.DecodeUint64(s.String()))
+		fmt.Println(txn.AccessList().StorageKeys())
 
 	}
 }
