@@ -31,6 +31,7 @@ func main() {
 		fmt.Println(d.Value)
 		fmt.Print("Nonce ")
 		fmt.Println(d.Nonce)
+		fmt.Println()
 	}
 
 	if err != nil {
