@@ -7,6 +7,7 @@ import (
 	"github.com/ethereum/go-ethereum/ethclient"
 	"log"
 	"math/big"
+	"os"
 )
 
 func main() {
@@ -48,21 +49,20 @@ func main() {
 
 			fmt.Print("Address ")
 			fmt.Println(lg.Address)
-			fmt.Print("Data ")
-			fmt.Println(lg.Data)
-			fmt.Print("BlockNumber")
+			fmt.Print("BlockNumber ")
 			fmt.Println(lg.BlockNumber)
-			fmt.Print("BlockHash")
+			fmt.Print("BlockHash ")
 			fmt.Println(lg.BlockHash.String())
-			fmt.Print("Index")
+			fmt.Print("Index ")
 			fmt.Println(lg.Index)
-			fmt.Print("Removed")
+			fmt.Print("Removed ")
 			fmt.Println(lg.Removed)
 			fmt.Println()
 		}
 
 		fmt.Println()
 		fmt.Println()
-	}
 
+	}
+	os.Exit(1)
 }
