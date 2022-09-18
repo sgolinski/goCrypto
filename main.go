@@ -50,7 +50,7 @@ func main() {
 		}
 
 		for _, lg := range receipt.Logs {
-
+			fmt.Println()
 			fmt.Print("Address ")
 			fmt.Println(lg.Address)
 			fmt.Print("BlockNumber ")
@@ -64,7 +64,6 @@ func main() {
 			fmt.Println()
 		}
 
-		fmt.Println()
 		fmt.Println()
 
 	}
