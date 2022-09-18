@@ -17,12 +17,20 @@ func main() {
 	if err != nil {
 		fmt.Println(err)
 	}
-
 	latestBlock := modules.GetLatestBlock(*client)
 
 	for _, d := range latestBlock.Transactions {
 
-		fmt.Println(d)
+		fmt.Println("From " + d.From)
+		fmt.Println("To " + d.To)
+		fmt.Print("Gas ")
+		fmt.Println(d.Gas)
+		fmt.Print("Gas Price ")
+		fmt.Println(d.GasPrice)
+		fmt.Print("Value ")
+		fmt.Println(d.Value)
+		fmt.Print("Nonce ")
+		fmt.Println(d.Nonce)
 	}
 
 	if err != nil {
