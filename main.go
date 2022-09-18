@@ -19,16 +19,10 @@ func main() {
 	}
 
 	latestBlock := modules.GetLatestBlock(*client)
-	transactions := latestBlock.Transactions
 
-	for _, t := range transactions {
+	for _, d := range latestBlock.Transactions {
 
-		fmt.Println(t.Hash)
-		fmt.Println(t.Value)
-		fmt.Println(t.From)
-		fmt.Println(t.To)
-		fmt.Println(t.AccessList)
-
+		fmt.Println(d)
 	}
 
 	if err != nil {
