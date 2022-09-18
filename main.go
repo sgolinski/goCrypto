@@ -21,9 +21,6 @@ func main() {
 	transaction := modules.GetLatestBlock(*client)
 	fmt.Println(transaction)
 
-	balance, _ := modules.GetAddressBalance(*client, address)
-	fmt.Println(balance)
-
 	if err != nil {
 		fmt.Println(err)
 	}
