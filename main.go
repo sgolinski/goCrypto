@@ -45,6 +45,7 @@ func main() {
 		fmt.Println(receicer.String())
 		fmt.Print("Sender: ")
 		fmt.Println(sender.String())
+		fmt.Println("Message")
 		fmt.Println(msg.From().String())
 		fmt.Println(msg.To().String())
 		fmt.Println(msg.Gas())
@@ -53,7 +54,7 @@ func main() {
 		fmt.Println(msg.GasFeeCap().String())
 		fmt.Println(msg.IsFake())
 		fmt.Println(msg.AccessList().StorageKeys())
-		fmt.Println()
+
 		if err != nil {
 			log.Fatal(err)
 		}
@@ -63,7 +64,24 @@ func main() {
 			log.Fatal(err)
 		}
 
+		fmt.Println("Receipt")
 		fmt.Println(receipt.Status) // 1
+		fmt.Print("Type")
+		fmt.Println(receipt.Type)
+		fmt.Print("Blocknumber")
+		fmt.Println(receipt.BlockNumber.String())
+		fmt.Print("Index")
+		fmt.Println(receipt.TransactionIndex)
+		fmt.Print("Contract")
+		fmt.Println(receipt.ContractAddress.String())
+		fmt.Print("Bloom")
+		fmt.Println(receipt.Bloom)
+		fmt.Print("Gas used")
+		fmt.Println(receipt.CumulativeGasUsed)
+		fmt.Print("Gas")
+		fmt.Println(receipt.GasUsed)
+		fmt.Println()
+		fmt.Println()
 	}
 
 	blockHash := common.HexToHash("0x9e8751ebb5069389b855bba72d94902cc385042661498a415979b7b6ee9ba4b9")
