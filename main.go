@@ -60,12 +60,12 @@ func main() {
 		for _, lg := range receipt.Logs {
 			//fmt.Print("Address ")
 			//fmt.Println(lg.Address)
-			address := lg.Address
-			contract, _ := client.BalanceAt(context.Background(), address, nil)
-			fmt.Println(contract)
+			//	address := lg.Address
+			//	contract, _ := client.BalanceAt(context.Background(), address, nil)
+			//fmt.Println(contract)
 		}
 
-		fmt.Println()
+		//	fmt.Println()
 
 	}
 	os.Exit(1)
