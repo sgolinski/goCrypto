@@ -3,7 +3,6 @@ package main
 import (
 	"context"
 	"fmt"
-	"github.com/ethereum/go-ethereum/core/types"
 	"github.com/ethereum/go-ethereum/ethclient"
 	"log"
 	"math/big"
@@ -30,25 +29,25 @@ func main() {
 
 	for _, tx := range block.Transactions() {
 
-		chainID, err := client.NetworkID(context.Background())
+		//	chainID, err := client.NetworkID(context.Background())
 		if err != nil {
 			log.Fatal(err)
 		}
 
-		msg, err := tx.AsMessage(types.NewEIP155Signer(chainID), nil)
+		//msg, err := tx.AsMessage(types.NewEIP155Signer(chainID), nil)
 
-		fmt.Print("From ")
-		fmt.Println(msg.From().String())
-		fmt.Print("To ")
-		fmt.Println(msg.To().String())
-		fmt.Println("Txn " + tx.Hash().String())
+		//fmt.Print("From ")
+		//fmt.Println(msg.From().String())
+		//fmt.Print("To ")
+		//fmt.Println(msg.To().String())
+		//fmt.Println("Txn " + tx.Hash().String())
+		//
+		//// cost is real value of transaction
+		//fmt.Print("Cost ")
+		//cost := tx.Cost().Uint64()
 
-		// cost is real value of transaction
-		fmt.Print("Cost ")
-		cost := tx.Cost().Uint64()
-
-		fmt.Print(cost / 1000000000000000000)
-		fmt.Println(" gwei")
+		//fmt.Print(cost / 1000000000000000000)
+		//fmt.Println(" gwei")
 		if err != nil {
 			log.Fatal(err)
 		}
@@ -59,8 +58,8 @@ func main() {
 		}
 
 		for _, lg := range receipt.Logs {
-			fmt.Print("Address ")
-			fmt.Println(lg.Address)
+			//fmt.Print("Address ")
+			//fmt.Println(lg.Address)
 			address := lg.Address
 			contract, _ := client.BalanceAt(context.Background(), address, nil)
 			fmt.Println(contract)
