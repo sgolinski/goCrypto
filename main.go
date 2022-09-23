@@ -14,6 +14,9 @@ import (
 // wei = 1000000000000000000
 func main() {
 	client, err := ethclient.Dial("http://localhost:8545")
+	memPool, _ := client.SyncProgress(context.Background())
+
+	fmt.Println(memPool)
 	if err != nil {
 		log.Fatal(err)
 	}
