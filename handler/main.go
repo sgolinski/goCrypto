@@ -6,6 +6,7 @@ import (
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/core/types"
 	"github.com/ethereum/go-ethereum/ethclient"
+	"github.com/status-im/keycard-go/hexutils"
 	"log"
 	"myapp/consts"
 )
@@ -16,9 +17,9 @@ func ExtractBlock(client *ethclient.Client, block types.Block) {
 
 	for _, tx := range block.Transactions() {
 
-		txHash := tx.Hash().String()
-		fmt.Println(txHash)
-		if consts.ContainMethod(tx.Hash().String()) {
+		data := hexutils.BytesToHex(tx.Data())
+		fmt.Println(data)
+		if consts.ContainMethod(data) {
 			fmt.Println("TRANSACTION ")
 			fmt.Print("HASH ")
 			fmt.Println(tx.Hash().String())
