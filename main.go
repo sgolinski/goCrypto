@@ -11,7 +11,7 @@ import (
 // 0x10ED43C718714eb63d5aA57B78B54704E256024E panckake swap router v2
 // wei = 1000000000000000000
 func main() {
-	client, err := ethclient.Dial("http://localhost:8545")
+	client, err := ethclient.Dial("ws://localhost:8545")
 	if err != nil {
 		log.Fatal(err)
 	}
