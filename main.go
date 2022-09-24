@@ -23,13 +23,18 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
+
+	// PObranie balansu konta
 	blockNumber, _ := client.BlockNumber(context.Background())
 	bigIntBlockNumber := big.NewInt(int64(blockNumber))
 	address := common.HexToAddress("0xf5dFe65e388694B5928e1f82f6A644Be63bD702a")
-
 	balanceAt, _ := client.BalanceAt(context.Background(), address, bigIntBlockNumber)
-
 	fmt.Println(balanceAt)
+
+	//eth syncing
+	sync, _ := client.SyncProgress(context.Background())
+	fmt.Println(sync)
+
 	for {
 		select {
 		case err := <-sub.Err():
