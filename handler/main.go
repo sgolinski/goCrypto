@@ -6,7 +6,6 @@ import (
 	"github.com/ethereum/go-ethereum/core/types"
 	"github.com/ethereum/go-ethereum/ethclient"
 	"log"
-	"os"
 )
 
 // 0x10ED43C718714eb63d5aA57B78B54704E256024E panckake swap router v2
@@ -42,7 +41,6 @@ func ExtractBlock(client *ethclient.Client, block types.Block) {
 		}
 		fmt.Println()
 	}
-	os.Exit(1)
 }
 
 func createMsg(client *ethclient.Client, tx *types.Transaction) (error, types.Message) {
