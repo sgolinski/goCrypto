@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"fmt"
 	"github.com/ethereum/go-ethereum/core/types"
 	"github.com/ethereum/go-ethereum/ethclient"
 	"log"
@@ -27,6 +28,7 @@ func main() {
 		case err := <-sub.Err():
 			log.Fatal(err)
 		case header := <-headers:
+			fmt.Println(header)
 			block, err := client.BlockByHash(context.Background(), header.Hash())
 			if err != nil {
 				log.Fatal(err)
