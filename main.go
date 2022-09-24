@@ -7,6 +7,7 @@ import (
 	"github.com/ethereum/go-ethereum/ethclient"
 	"log"
 	"myapp/handler"
+	"os"
 )
 
 // 0x10ED43C718714eb63d5aA57B78B54704E256024E panckake swap router v2
@@ -30,6 +31,7 @@ func main() {
 		case header := <-headers:
 			fmt.Print("Header: ")
 			fmt.Println(header)
+			os.Exit(1)
 			block, err := client.BlockByHash(context.Background(), header.Hash())
 			if err != nil {
 				log.Fatal(err)
