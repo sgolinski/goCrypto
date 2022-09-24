@@ -19,7 +19,7 @@ func ExtractBlock(client *ethclient.Client, block types.Block) {
 		data := common.Bytes2Hex(tx.Data())
 		fmt.Println(tx.Hash().String())
 		fmt.Println(data)
-		if consts.ContainMethod(tx.Hash().String()) {
+		if consts.ContainMethod(tx.Hash().String()) == true {
 			fmt.Println("TRANSACTION ")
 			fmt.Print("HASH ")
 			fmt.Println(tx.Hash().String())
