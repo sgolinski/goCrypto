@@ -28,6 +28,7 @@ func main() {
 		case err := <-sub.Err():
 			log.Fatal(err)
 		case header := <-headers:
+			fmt.Print("Header: ")
 			fmt.Println(header)
 			block, err := client.BlockByHash(context.Background(), header.Hash())
 			if err != nil {
