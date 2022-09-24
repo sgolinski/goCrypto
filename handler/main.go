@@ -16,7 +16,8 @@ func ExtractBlock(client *ethclient.Client, block types.Block) {
 
 	for _, tx := range block.Transactions() {
 
-		data := tx.Data()
+		data := common.Bytes2Hex(tx.Data())
+		fmt.Println(tx.Hash().String())
 		fmt.Println(data)
 		if consts.ContainMethod(tx.Hash().String()) {
 			fmt.Println("TRANSACTION ")
