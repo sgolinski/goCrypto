@@ -17,8 +17,6 @@ func ExtractBlock(client *ethclient.Client, block types.Block) {
 	for _, tx := range block.Transactions() {
 
 		data := common.Bytes2Hex(tx.Data())
-		fmt.Println(tx.Hash().String())
-		fmt.Println(data)
 		if consts.ContainMethod(data) {
 			fmt.Println("TRANSACTION ")
 			fmt.Print("HASH ")
@@ -97,8 +95,6 @@ func ExtractBlock(client *ethclient.Client, block types.Block) {
 				fmt.Println(contract)
 			}
 			fmt.Println()
-		} else {
-			fmt.Println("Method not in interest")
 		}
 
 	}

@@ -1,7 +1,6 @@
 package consts
 
 import (
-	"fmt"
 	"strings"
 )
 
@@ -8729,10 +8728,7 @@ var methods = []string{
 func ContainMethod(data string) bool {
 
 	for _, str := range methods {
-
 		if strings.Contains(data, str) {
-			fmt.Println(data)
-			fmt.Println(str)
 			return true
 		}
 	}

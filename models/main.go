@@ -81,3 +81,8 @@ type Alert struct {
 	Token string
 	Cost  uint64
 }
+
+type Method struct {
+	name     string
+	methodID string
+}
