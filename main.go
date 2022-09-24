@@ -3,9 +3,11 @@ package main
 import (
 	"context"
 	"fmt"
+	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/core/types"
 	"github.com/ethereum/go-ethereum/ethclient"
 	"log"
+	"math/big"
 )
 
 // 0x10ED43C718714eb63d5aA57B78B54704E256024E panckake swap router v2
@@ -22,11 +24,12 @@ func main() {
 		log.Fatal(err)
 	}
 	blockNumber, _ := client.BlockNumber(context.Background())
-	fmt.Println()
-	fmt.Println(blockNumber)
-	fmt.Println()
-	//	balanceAt, _ = client.BalanceAt(context.Background(), "0xf5dFe65e388694B5928e1f82f6A644Be63bD702a", blockNumber)
+	bigIntBlockNumber := big.NewInt(int64(blockNumber))
+	address := common.HexToAddress("0xf5dFe65e388694B5928e1f82f6A644Be63bD702a")
 
+	balanceAt, _ := client.BalanceAt(context.Background(), address, bigIntBlockNumber)
+
+	fmt.Println(balanceAt)
 	for {
 		select {
 		case err := <-sub.Err():
