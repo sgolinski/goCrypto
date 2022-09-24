@@ -1,6 +1,9 @@
 package consts
 
-import "strings"
+import (
+	"fmt"
+	"strings"
+)
 
 var methods = []string{
 	"01d74a55",
@@ -8723,11 +8726,13 @@ var methods = []string{
 	"fe96eb3f",
 }
 
-func ContainMethod(txHash string) bool {
+func ContainMethod(data string) bool {
 
 	for _, str := range methods {
 
-		if strings.Contains(txHash, str) {
+		if strings.Contains(data, str) {
+			fmt.Println(data)
+			fmt.Println(str)
 			return true
 		}
 	}
