@@ -32,8 +32,10 @@ func main() {
 	fmt.Println(balanceAt)
 
 	//eth syncing
-	sync, _ := client.SyncProgress(context.Background())
-	fmt.Println(sync)
+	//sync, _ := client.SyncProgress(context.Background())
+	//fmt.Println(sync)
+
+	fmt.Println(sub)
 
 	for {
 		select {
