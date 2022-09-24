@@ -21,6 +21,11 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
+	blockNumber, _ := client.BlockNumber(context.Background())
+	fmt.Println()
+	fmt.Println(blockNumber)
+	fmt.Println()
+	//	balanceAt, _ = client.BalanceAt(context.Background(), "0xf5dFe65e388694B5928e1f82f6A644Be63bD702a", blockNumber)
 
 	for {
 		select {
