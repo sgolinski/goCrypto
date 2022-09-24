@@ -3,11 +3,9 @@ package main
 import (
 	"context"
 	"fmt"
-	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/core/types"
 	"github.com/ethereum/go-ethereum/ethclient"
 	"log"
-	"math/big"
 )
 
 // 0x10ED43C718714eb63d5aA57B78B54704E256024E panckake swap router v2
@@ -25,17 +23,14 @@ func main() {
 	}
 
 	// PObranie balansu konta
-	blockNumber, _ := client.BlockNumber(context.Background())
-	bigIntBlockNumber := big.NewInt(int64(blockNumber))
-	address := common.HexToAddress("0xf5dFe65e388694B5928e1f82f6A644Be63bD702a")
-	balanceAt, _ := client.BalanceAt(context.Background(), address, bigIntBlockNumber)
-	fmt.Println(balanceAt)
+	//blockNumber, _ := client.BlockNumber(context.Background())
+	//bigIntBlockNumber := big.NewInt(int64(blockNumber))
+	//address := common.HexToAddress("0xf5dFe65e388694B5928e1f82f6A644Be63bD702a")
+	//balanceAt, _ := client.BalanceAt(context.Background(), address, bigIntBlockNumber)
 
 	//eth syncing
 	//sync, _ := client.SyncProgress(context.Background())
 	//fmt.Println(sync)
-
-	fmt.Println(sub)
 
 	for {
 		select {
