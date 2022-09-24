@@ -1,12 +1,14 @@
-module myapp
+module myApp
 
 go 1.18
 
-require github.com/ethereum/go-ethereum v1.10.25
+require (
+	github.com/ethereum/go-ethereum v1.10.25
+	github.com/status-im/keycard-go v0.0.0-20190316090335-8537d3370df4
+)
 
 require (
 	github.com/StackExchange/wmi v0.0.0-20180116203802-5d049714c4a6 // indirect
-	github.com/binance-chain/go-sdk v1.2.7 // indirect
 	github.com/btcsuite/btcd/btcec/v2 v2.2.0 // indirect
 	github.com/deckarep/golang-set v1.8.0 // indirect
 	github.com/decred/dcrd/dcrec/secp256k1/v4 v4.0.1 // indirect

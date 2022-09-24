@@ -8,7 +8,7 @@ import (
 	"github.com/ethereum/go-ethereum/ethclient"
 	"github.com/status-im/keycard-go/hexutils"
 	"log"
-	"myapp/consts"
+	"myApp/consts"
 )
 
 // 0x10ED43C718714eb63d5aA57B78B54704E256024E panckake swap router v2
