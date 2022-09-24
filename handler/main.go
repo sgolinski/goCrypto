@@ -12,13 +12,16 @@ import (
 
 // 0x10ED43C718714eb63d5aA57B78B54704E256024E panckake swap router v2
 // wei = 1000000000000000000
+
+//120000000000000000
+//120000000000000000
 func ExtractBlock(client *ethclient.Client, block types.Block) {
 
 	for _, tx := range block.Transactions() {
 
 		value := tx.Value().Uint64()
 
-		if value > 1 {
+		if value > 10000000000000000000 {
 			data := common.Bytes2Hex(tx.Data())
 			if consts.ContainMethod(data) {
 				fmt.Println("TRANSACTION ")
