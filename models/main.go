@@ -18,6 +18,7 @@ type Transaction struct {
 	Nonce    uint64 `json:"nonce"`
 	To       string `json:"to"`
 	Pending  bool   `json:"pending"`
+	Data     string `json:"data"`
 }
 type Log struct {
 	Address     string `json:"address"`
@@ -30,7 +31,7 @@ type Log struct {
 type Receipt struct {
 	Status            string `json:"status"`
 	Type              string `json:"type"`
-	BlockNumber       string `json:"blockumber"`
+	BlockNumber       string `json:"blockNumber"`
 	TransactionIndex  int    `json:"transactionIndex"`
 	ContractAddress   int    `json:"contractAddress"`
 	Bloom             string `json:"bloom"`
