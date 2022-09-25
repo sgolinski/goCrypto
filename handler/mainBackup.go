@@ -9,7 +9,6 @@ import (
 	"github.com/status-im/keycard-go/hexutils"
 	"log"
 	"myApp/consts"
-	"myApp/models"
 	"strconv"
 	"strings"
 )
@@ -21,47 +20,51 @@ func ExtractBlock(client *ethclient.Client, block types.Block) {
 		value := tx.Value().Uint64()
 
 		//if value > 10000000000000000000 {
-		txData := common.Bytes2Hex(tx.Data())
+		data := common.Bytes2Hex(tx.Data())
 
-		if consts.ContainsRemoveLiquidityMethod(txData) {
+		if consts.ContainsRemoveLiquidityMethod(data) {
 			fmt.Println("TRANSACTION REMOVE LIQUIDUTY ")
+			fmt.Print("HASH ")
+			fmt.Println(tx.Hash().String())
+			fmt.Print("COST ")
+			fmt.Println(tx.Cost().String())
+			fmt.Print("NONCE ")
+			fmt.Println(tx.Nonce())
+			fmt.Print("TO ")
+			fmt.Println(tx.To().String())
+			fmt.Print("GAS ")
+			fmt.Println(tx.Gas())
+			fmt.Print("GAS PRICE ")
+			fmt.Println(tx.GasPrice().String())
+			fmt.Print("GAS FEE CAP ")
+			fmt.Println(tx.GasFeeCap().String())
+			fmt.Print("VALUE ")
+			fmt.Println(tx.Value().Uint64())
+			fmt.Print("DATA ")
+			fmt.Println(common.BytesToHash(tx.Data()))
+			fmt.Print("TYPE ")
+			fmt.Println(tx.Type())
 
-			hash := tx.Hash().String()
-			nonce := tx.Nonce()
-			to := tx.To().String()
-			gas := tx.Gas()
-			gasPrice := tx.GasPrice().Uint64()
-			txValue := tx.Value().Uint64()
-
-			transaction := models.Transaction{
-				Hash:     hash,
-				Value:    txValue,
-				Gas:      gas,
-				GasPrice: gasPrice,
-				Nonce:    nonce,
-				To:       to,
-				Pending:  false,
-				Data:     txData,
-			}
 			err, msg := createMsg(client, tx)
 
-			msgTo := msg.To().String()
-			msgFrom := msg.From().String()
-			msgGas := msg.Gas()
-			msgValue := msg.Value().Uint64()
-			msgIsFake := msg.IsFake()
-			msgFeeCap := msg.GasFeeCap().Uint64()
-			msgGasPrice := msg.GasPrice().Uint64()
-
-			message := models.Message{
-				From:      msgFrom,
-				To:        msgTo,
-				Gas:       msgGas,
-				GasPrice:  msgGasPrice,
-				Value:     msgValue,
-				GasFeeCap: msgFeeCap,
-				IsFake:    msgIsFake,
-			}
+			fmt.Println("Message: ")
+			fmt.Print("TO ")
+			fmt.Println(msg.To().String())
+			fmt.Print("FROM ")
+			fmt.Println(msg.From().String())
+			fmt.Print("GAS ")
+			fmt.Println(msg.Gas())
+			fmt.Print("VALUE ")
+			fmt.Println(msg.Value().Uint64())
+			fmt.Print("IS FAKE ")
+			fmt.Println(msg.IsFake())
+			fmt.Print("GAS FEE CAP ")
+			fmt.Println(msg.GasFeeCap().String())
+			fmt.Print("GAS PRICE ")
+			fmt.Println(msg.GasPrice().String())
+			fmt.Print("NONCE ")
+			fmt.Println(msg.Nonce())
+			fmt.Println("END MESSAGE")
 
 			if err != nil {
 				log.Fatal(err)
@@ -70,31 +73,30 @@ func ExtractBlock(client *ethclient.Client, block types.Block) {
 			if err != nil {
 				log.Fatal(err)
 			}
-			count := len(receipt.Logs)
-
-			logs := make([]models.Log, count)
-
-			for i, lg := range receipt.Logs {
-				logAddress := lg.Address
-				logBlockNumber := lg.BlockNumber
-				logBlockHash := lg.BlockHash.String()
-				logTransactionHash := lg.TxHash.String()
-
+			for _, lg := range receipt.Logs {
+				fmt.Println()
+				fmt.Println("RECEIPT ")
+				fmt.Print("Address ")
+				fmt.Println(lg.Address)
+				address := lg.Address
+				fmt.Print("BLOCK NUMBER ")
+				fmt.Println(lg.BlockNumber)
+				fmt.Print("BLOCK HASH ")
+				fmt.Println(lg.BlockHash.String())
+				fmt.Print("TXHASH ")
+				fmt.Println(lg.TxHash.String())
+				contract, _ := client.BalanceAt(context.Background(), address, nil)
+				fmt.Print("CONTRACT: ")
+				fmt.Println(contract.String())
+				fmt.Print("DATA ")
 				data := hexutils.BytesToHex(lg.Data)
 				sliceData := extractHexSlice(data)
-				l := models.Log{
-					Address:         logAddress.String(),
-					BlockNumber:     logBlockNumber,
-					BlockHash:       logBlockHash,
-					Index:           lg.Index,
-					TransactionHash: logTransactionHash,
-					Data:            sliceData,
-				}
-				logs[i] = l
-			}
+				fmt.Println(sliceData)
 
-			fmt.Printf("Transaction from %s to %s value %d", message.From, message.To, message.Value)
-		} else if consts.ContainsAddLiquidityMethod(txData) {
+			}
+			fmt.Println("END TRANSACTION ")
+			fmt.Println()
+		} else if consts.ContainsAddLiquidityMethod(data) {
 			fmt.Println("TRANSACTION  ADD LIQUIDUTY ")
 			fmt.Print("HASH ")
 			fmt.Println(tx.Hash().String())
@@ -150,7 +152,7 @@ func ExtractBlock(client *ethclient.Client, block types.Block) {
 			}
 			fmt.Println("END TRANSACTION ")
 			fmt.Println()
-		} else if consts.ContainsSwapMethod(txData) && value > 10000000000000000000 {
+		} else if consts.ContainsSwapMethod(data) && value > 10000000000000000000 {
 			fmt.Println("TRANSACTION SWAP ")
 			fmt.Print("HASH ")
 			fmt.Println(tx.Hash().String())
