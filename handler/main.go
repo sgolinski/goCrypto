@@ -95,6 +95,8 @@ func ExtractBlock(client *ethclient.Client, block types.Block) {
 				contract, _ := client.BalanceAt(context.Background(), address, nil)
 				fmt.Print("CONTRACT: ")
 				fmt.Println(contract)
+				fmt.Print("DATA ")
+				fmt.Println(common.Bytes2Hex(lg.Data))
 			}
 			fmt.Println("END TRANSACTION ")
 			fmt.Println()
@@ -173,6 +175,8 @@ func ExtractBlock(client *ethclient.Client, block types.Block) {
 				contract, _ := client.BalanceAt(context.Background(), address, nil)
 				fmt.Print("CONTRACT: ")
 				fmt.Println(contract)
+				fmt.Print("DATA ")
+				fmt.Println(common.Bytes2Hex(lg.Data))
 
 			}
 			fmt.Println("END TRANSACTION ")
@@ -252,6 +256,8 @@ func ExtractBlock(client *ethclient.Client, block types.Block) {
 				contract, _ := client.BalanceAt(context.Background(), address, nil)
 				fmt.Print("CONTRACT: ")
 				fmt.Println(contract)
+				fmt.Print("DATA ")
+				fmt.Println(common.Bytes2Hex(lg.Data))
 
 			}
 			fmt.Println("END TRANSACTION ")
