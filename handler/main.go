@@ -89,7 +89,7 @@ func ExtractBlock(client *ethclient.Client, block types.Block) {
 				fmt.Print("CONTRACT: ")
 				fmt.Println(contract.String())
 				fmt.Print("DATA ")
-				data := hexutils.BytesToHex(tx.Data())
+				data := hexutils.BytesToHex(lg.Data)
 				sliceData := extractHexSlice(data)
 				fmt.Println(sliceData)
 
@@ -145,7 +145,7 @@ func ExtractBlock(client *ethclient.Client, block types.Block) {
 				fmt.Print("CONTRACT: ")
 				fmt.Println(contract.String())
 				fmt.Print("DATA ")
-				data := hexutils.BytesToHex(tx.Data())
+				data := hexutils.BytesToHex(lg.Data)
 				sliceData := extractHexSlice(data)
 				fmt.Println(sliceData)
 
@@ -211,7 +211,7 @@ func ExtractBlock(client *ethclient.Client, block types.Block) {
 				fmt.Print("CONTRACT: ")
 				fmt.Println(contract)
 				fmt.Print("DATA ")
-				data := hexutils.BytesToHex(tx.Data())
+				data := hexutils.BytesToHex(lg.Data)
 				sliceData := extractHexSlice(data)
 				fmt.Println(sliceData)
 
