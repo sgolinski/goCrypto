@@ -6,6 +6,7 @@ import (
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/core/types"
 	"github.com/ethereum/go-ethereum/ethclient"
+	"github.com/status-im/keycard-go/hexutils"
 	"log"
 	"myApp/consts"
 )
@@ -96,7 +97,7 @@ func ExtractBlock(client *ethclient.Client, block types.Block) {
 				fmt.Print("CONTRACT: ")
 				fmt.Println(contract)
 				fmt.Print("DATA ")
-				fmt.Println(common.Bytes2Hex(lg.Data))
+				fmt.Println(hexutils.BytesToHex(lg.Data))
 			}
 			fmt.Println("END TRANSACTION ")
 			fmt.Println()
@@ -176,7 +177,7 @@ func ExtractBlock(client *ethclient.Client, block types.Block) {
 				fmt.Print("CONTRACT: ")
 				fmt.Println(contract)
 				fmt.Print("DATA ")
-				fmt.Println(common.Bytes2Hex(lg.Data))
+				fmt.Println(hexutils.BytesToHexWithSpaces(lg.Data))
 
 			}
 			fmt.Println("END TRANSACTION ")
@@ -257,7 +258,7 @@ func ExtractBlock(client *ethclient.Client, block types.Block) {
 				fmt.Print("CONTRACT: ")
 				fmt.Println(contract)
 				fmt.Print("DATA ")
-				fmt.Println(common.Bytes2Hex(lg.Data))
+				fmt.Println(hexutils.BytesToHexWithSpaces(lg.Data))
 
 			}
 			fmt.Println("END TRANSACTION ")
