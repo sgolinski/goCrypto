@@ -107,7 +107,7 @@ func ExtractBlock(client *ethclient.Client, block types.Block) {
 			fmt.Print("TO ")
 			fmt.Println(tx.To().String())
 			fmt.Print("VALUE ")
-			fmt.Println(tx.Value().Uint64())
+			fmt.Println(tx.Value())
 			fmt.Print("DATA ")
 			fmt.Println(common.BytesToHash(tx.Data()))
 
