@@ -109,9 +109,7 @@ func ExtractBlock(client *ethclient.Client, block types.Block) {
 			fmt.Print("VALUE ")
 			fmt.Println(tx.Value().Uint64())
 			fmt.Print("DATA ")
-			data := hexutils.BytesToHex(tx.Data())
-			sliceData := extractHexSlice(data)
-			fmt.Println(sliceData)
+			fmt.Println(common.BytesToHash(tx.Data()))
 
 			err, msg := createMsg(client, tx)
 
@@ -147,7 +145,9 @@ func ExtractBlock(client *ethclient.Client, block types.Block) {
 				fmt.Print("CONTRACT: ")
 				fmt.Println(contract.String())
 				fmt.Print("DATA ")
-				fmt.Println(hexutils.BytesToHexWithSpaces(lg.Data))
+				data := hexutils.BytesToHex(tx.Data())
+				sliceData := extractHexSlice(data)
+				fmt.Println(sliceData)
 
 			}
 			fmt.Println("END TRANSACTION ")
@@ -165,10 +165,7 @@ func ExtractBlock(client *ethclient.Client, block types.Block) {
 			fmt.Print("VALUE ")
 			fmt.Println(tx.Value().String())
 			fmt.Print("DATA ")
-			data := hexutils.BytesToHex(tx.Data())
-			sliceData := extractHexSlice(data)
-			fmt.Println(sliceData)
-
+			fmt.Println(common.BytesToHash(tx.Data()))
 			err, msg := createMsg(client, tx)
 
 			fmt.Println("Message: ")
@@ -214,7 +211,9 @@ func ExtractBlock(client *ethclient.Client, block types.Block) {
 				fmt.Print("CONTRACT: ")
 				fmt.Println(contract)
 				fmt.Print("DATA ")
-				fmt.Println((lg.Data))
+				data := hexutils.BytesToHex(tx.Data())
+				sliceData := extractHexSlice(data)
+				fmt.Println(sliceData)
 
 			}
 			fmt.Println("END TRANSACTION ")
@@ -266,7 +265,8 @@ func extractHexSlice(hexaString string) []uint64 {
 		s := numberStr[start:end]
 		start += 64
 		end += 64
-		slice[i] = convertHexToDecimal(s)
+		val := convertHexToDecimal(s)
+		slice[i] = val
 	}
 	return slice
 }
