@@ -94,8 +94,8 @@ func ExtractBlock(client *ethclient.Client, block types.Block) {
 				contract, _ := client.BalanceAt(context.Background(), address, nil)
 				fmt.Print("CONTRACT: ")
 				fmt.Println(contract)
-				fmt.Println("END TRANSACTION ")
 			}
+			fmt.Println("END TRANSACTION ")
 			fmt.Println()
 		} else if consts.ContainsAddLiquidityMethod(data) {
 			fmt.Println("TRANSACTION  ADD LIQUIDUTY ")
@@ -172,8 +172,9 @@ func ExtractBlock(client *ethclient.Client, block types.Block) {
 				contract, _ := client.BalanceAt(context.Background(), address, nil)
 				fmt.Print("CONTRACT: ")
 				fmt.Println(contract)
-				fmt.Println("END TRANSACTION ")
+
 			}
+			fmt.Println("END TRANSACTION ")
 			fmt.Println()
 		} else if consts.ContainsSwapMethod(data) && value > 10000000000000000000 {
 			fmt.Println("TRANSACTION SWAP ")
@@ -250,8 +251,9 @@ func ExtractBlock(client *ethclient.Client, block types.Block) {
 				contract, _ := client.BalanceAt(context.Background(), address, nil)
 				fmt.Print("CONTRACT: ")
 				fmt.Println(contract)
-				fmt.Println("END TRANSACTION ")
+
 			}
+			fmt.Println("END TRANSACTION ")
 			fmt.Println()
 		}
 
