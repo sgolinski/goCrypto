@@ -254,7 +254,7 @@ func extractHexSlice(hexaString string) []uint64 {
 
 	numberStr := strings.Replace(hexaString, "0x", "", -1)
 	numberStr = strings.Replace(numberStr, "0X", "", -1)
-
+	numberStr = strings.ToLower(numberStr)
 	counter := len(numberStr)
 	divide := counter / 64
 
