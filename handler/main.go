@@ -46,7 +46,7 @@ func ExtractBlock(client *ethclient.Client, block types.Block) {
 			err, msg := createMsg(client, tx)
 			fmt.Println(msg.From().String())
 			fmt.Println(msg.To().String())
-			fmt.Println(msg.Value().Uint64())
+
 			if err != nil {
 				log.Fatal(err)
 			}
@@ -133,4 +133,7 @@ func extractHexSlice(hexaString string) []uint64 {
 		slice[i] = val
 	}
 	return slice
+}
+func weiToBnb(value uint64) int {
+	return 0
 }
