@@ -23,7 +23,7 @@ func ExtractBlock(client *ethclient.Client, block types.Block) {
 
 		//if value > 10000000000000000000 {
 		data := common.Bytes2Hex(tx.Data())
-		if consts.ContainsRemoveLiquidityMethod(data) {
+		if consts.ContainsSwapMethod(data) {
 			fmt.Println("TRANSACTION ")
 			fmt.Print("HASH ")
 			fmt.Println(tx.Hash().String())
