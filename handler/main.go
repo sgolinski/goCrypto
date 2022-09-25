@@ -9,6 +9,8 @@ import (
 	"github.com/status-im/keycard-go/hexutils"
 	"log"
 	"myApp/consts"
+	"strconv"
+	"strings"
 )
 
 func ExtractBlock(client *ethclient.Client, block types.Block) {
@@ -81,23 +83,16 @@ func ExtractBlock(client *ethclient.Client, block types.Block) {
 				fmt.Println(lg.BlockNumber)
 				fmt.Print("BLOCK HASH ")
 				fmt.Println(lg.BlockHash.String())
-				fmt.Print("TOPICS ")
-				fmt.Println(lg.Topics)
-				fmt.Print("REMOVED ")
-				fmt.Println(lg.Removed)
-				fmt.Print("INDEX ")
-				fmt.Println(lg.Index)
 				fmt.Print("TXHASH ")
 				fmt.Println(lg.TxHash.String())
-				fmt.Print("TXINDEX ")
-				fmt.Println(lg.TxIndex)
-				fmt.Print("Contract ")
-				fmt.Println(lg.Address)
 				contract, _ := client.BalanceAt(context.Background(), address, nil)
 				fmt.Print("CONTRACT: ")
-				fmt.Println(contract)
+				fmt.Println(contract.String())
 				fmt.Print("DATA ")
-				fmt.Println(hexutils.BytesToHex(lg.Data))
+				data := hexutils.BytesToHex(tx.Data())
+				sliceData := extractHexSlice(data)
+				fmt.Println(sliceData)
+
 			}
 			fmt.Println("END TRANSACTION ")
 			fmt.Println()
@@ -111,18 +106,13 @@ func ExtractBlock(client *ethclient.Client, block types.Block) {
 			fmt.Println(tx.Nonce())
 			fmt.Print("TO ")
 			fmt.Println(tx.To().String())
-			fmt.Print("GAS ")
-			fmt.Println(tx.Gas())
-			fmt.Print("GAS PRICE ")
-			fmt.Println(tx.GasPrice().String())
-			fmt.Print("GAS FEE CAP ")
-			fmt.Println(tx.GasFeeCap().String())
 			fmt.Print("VALUE ")
 			fmt.Println(tx.Value().Uint64())
 			fmt.Print("DATA ")
-			fmt.Println(common.BytesToHash(tx.Data()))
-			fmt.Print("TYPE ")
-			fmt.Println(tx.Type())
+			data := hexutils.BytesToHex(tx.Data())
+			sliceData := extractHexSlice(data)
+			fmt.Println(sliceData)
+
 			err, msg := createMsg(client, tx)
 
 			fmt.Println("Message: ")
@@ -130,18 +120,10 @@ func ExtractBlock(client *ethclient.Client, block types.Block) {
 			fmt.Println(msg.To().String())
 			fmt.Print("FROM ")
 			fmt.Println(msg.From().String())
-			fmt.Print("GAS ")
-			fmt.Println(msg.Gas())
 			fmt.Print("VALUE ")
 			fmt.Println(msg.Value().String())
 			fmt.Print("IS FAKE ")
 			fmt.Println(msg.IsFake())
-			fmt.Print("GAS FEE CAP ")
-			fmt.Println(msg.GasFeeCap().String())
-			fmt.Print("GAS PRICE ")
-			fmt.Println(msg.GasPrice().String())
-			fmt.Print("NONCE ")
-			fmt.Println(msg.Nonce())
 			fmt.Println("END MESSAGE")
 
 			if err != nil {
@@ -157,25 +139,13 @@ func ExtractBlock(client *ethclient.Client, block types.Block) {
 				fmt.Print("Address ")
 				fmt.Println(lg.Address)
 				address := lg.Address
-				fmt.Print("BLOCK NUMBER ")
-				fmt.Println(lg.BlockNumber)
-				fmt.Print("BLOCK HASH ")
-				fmt.Println(lg.BlockHash.String())
-				fmt.Print("TOPICS ")
-				fmt.Println(lg.Topics)
-				fmt.Print("REMOVED ")
-				fmt.Println(lg.Removed)
-				fmt.Print("INDEX ")
-				fmt.Println(lg.Index)
 				fmt.Print("TXHASH ")
 				fmt.Println(lg.TxHash.String())
-				fmt.Print("TXINDEX ")
-				fmt.Println(lg.TxIndex)
 				fmt.Print("Contract ")
 				fmt.Println(lg.Address)
 				contract, _ := client.BalanceAt(context.Background(), address, nil)
 				fmt.Print("CONTRACT: ")
-				fmt.Println(contract)
+				fmt.Println(contract.String())
 				fmt.Print("DATA ")
 				fmt.Println(hexutils.BytesToHexWithSpaces(lg.Data))
 
@@ -192,18 +162,13 @@ func ExtractBlock(client *ethclient.Client, block types.Block) {
 			fmt.Println(tx.Nonce())
 			fmt.Print("TO ")
 			fmt.Println(tx.To().String())
-			fmt.Print("GAS ")
-			fmt.Println(tx.Gas())
-			fmt.Print("GAS PRICE ")
-			fmt.Println(tx.GasPrice().String())
-			fmt.Print("GAS FEE CAP ")
-			fmt.Println(tx.GasFeeCap().String())
 			fmt.Print("VALUE ")
 			fmt.Println(tx.Value().String())
 			fmt.Print("DATA ")
-			fmt.Println(common.BytesToHash(tx.Data()))
-			fmt.Print("TYPE ")
-			fmt.Println(tx.Type())
+			data := hexutils.BytesToHex(tx.Data())
+			sliceData := extractHexSlice(data)
+			fmt.Println(sliceData)
+
 			err, msg := createMsg(client, tx)
 
 			fmt.Println("Message: ")
@@ -211,19 +176,10 @@ func ExtractBlock(client *ethclient.Client, block types.Block) {
 			fmt.Println(msg.To().String())
 			fmt.Print("FROM ")
 			fmt.Println(msg.From().String())
-			fmt.Print("GAS ")
-			fmt.Println(msg.Gas())
 			fmt.Print("VALUE ")
 			fmt.Println(msg.Value().String())
 			fmt.Print("IS FAKE ")
 			fmt.Println(msg.IsFake())
-			fmt.Print("GAS FEE CAP ")
-			fmt.Println(msg.GasFeeCap().String())
-			fmt.Print("GAS PRICE ")
-			fmt.Println(msg.GasPrice().String())
-			fmt.Print("NONCE ")
-			fmt.Println(msg.Nonce())
-			fmt.Println("END MESSAGE")
 
 			if err != nil {
 				log.Fatal(err)
@@ -258,7 +214,7 @@ func ExtractBlock(client *ethclient.Client, block types.Block) {
 				fmt.Print("CONTRACT: ")
 				fmt.Println(contract)
 				fmt.Print("DATA ")
-				fmt.Println(hexutils.BytesToHexWithSpaces(lg.Data))
+				fmt.Println((lg.Data))
 
 			}
 			fmt.Println("END TRANSACTION ")
@@ -277,4 +233,40 @@ func createMsg(client *ethclient.Client, tx *types.Transaction) (error, types.Me
 
 	msg, err := tx.AsMessage(types.NewEIP155Signer(chainID), nil)
 	return err, msg
+}
+
+func hexaNumberToInteger(hexaString string) string {
+
+	numberStr := strings.Replace(hexaString, "0x", "", -1)
+	numberStr = strings.Replace(numberStr, "0X", "", -1)
+	return numberStr
+}
+
+func convertHexToDecimal(hexaNumber string) uint64 {
+
+	output, err := strconv.ParseUint(hexaNumberToInteger(hexaNumber), 16, 64)
+	if err != nil {
+		fmt.Println(err)
+	}
+	return output
+}
+
+func extractHexSlice(hexaString string) []uint64 {
+
+	numberStr := strings.Replace(hexaString, "0x", "", -1)
+	numberStr = strings.Replace(numberStr, "0X", "", -1)
+
+	counter := len(numberStr)
+	divide := counter / 64
+
+	slice := make([]uint64, divide)
+	start := 0
+	end := 64
+	for i := 0; i < divide; i++ {
+		s := numberStr[start:end]
+		start += 64
+		end += 64
+		slice[i] = convertHexToDecimal(s)
+	}
+	return slice
 }

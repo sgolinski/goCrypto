@@ -1,6 +1,5 @@
 package models
 
-// Block data structure
 type Block struct {
 	BlockNumber       int64         `json:"blockNumber"`
 	Timestamp         uint64        `json:"timestamp"`
@@ -82,4 +81,8 @@ type Alert struct {
 type Method struct {
 	name     string
 	methodID string
+}
+
+type Data struct {
+	value uint64
 }
