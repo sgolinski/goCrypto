@@ -41,7 +41,6 @@ func ExtractBlock(client *ethclient.Client, block types.Block) {
 			fmt.Println(common.BytesToHash(tx.Data()))
 			fmt.Print("TYPE ")
 			fmt.Println(tx.Type())
-			fmt.Println("END TRANSACTION ")
 			err, msg := createMsg(client, tx)
 
 			fmt.Println("Message: ")
@@ -95,6 +94,7 @@ func ExtractBlock(client *ethclient.Client, block types.Block) {
 				contract, _ := client.BalanceAt(context.Background(), address, nil)
 				fmt.Print("CONTRACT: ")
 				fmt.Println(contract)
+				fmt.Println("END TRANSACTION ")
 			}
 			fmt.Println()
 		} else if consts.ContainsAddLiquidityMethod(data) {
@@ -119,7 +119,6 @@ func ExtractBlock(client *ethclient.Client, block types.Block) {
 			fmt.Println(common.BytesToHash(tx.Data()))
 			fmt.Print("TYPE ")
 			fmt.Println(tx.Type())
-			fmt.Println("END TRANSACTION ")
 			err, msg := createMsg(client, tx)
 
 			fmt.Println("Message: ")
@@ -173,6 +172,7 @@ func ExtractBlock(client *ethclient.Client, block types.Block) {
 				contract, _ := client.BalanceAt(context.Background(), address, nil)
 				fmt.Print("CONTRACT: ")
 				fmt.Println(contract)
+				fmt.Println("END TRANSACTION ")
 			}
 			fmt.Println()
 		} else if consts.ContainsSwapMethod(data) && value > 10000000000000000000 {
@@ -197,7 +197,6 @@ func ExtractBlock(client *ethclient.Client, block types.Block) {
 			fmt.Println(common.BytesToHash(tx.Data()))
 			fmt.Print("TYPE ")
 			fmt.Println(tx.Type())
-			fmt.Println("END TRANSACTION ")
 			err, msg := createMsg(client, tx)
 
 			fmt.Println("Message: ")
@@ -251,6 +250,7 @@ func ExtractBlock(client *ethclient.Client, block types.Block) {
 				contract, _ := client.BalanceAt(context.Background(), address, nil)
 				fmt.Print("CONTRACT: ")
 				fmt.Println(contract)
+				fmt.Println("END TRANSACTION ")
 			}
 			fmt.Println()
 		}
