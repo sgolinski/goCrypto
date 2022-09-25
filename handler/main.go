@@ -26,23 +26,23 @@ func ExtractBlock(client *ethclient.Client, block types.Block) {
 		if consts.ContainsRemoveLiquidityMethod(txData) {
 			fmt.Println("TRANSACTION REMOVE LIQUIDUTY ")
 
-			//hash := tx.Hash().String()
-			//nonce := tx.Nonce()
-			//to := tx.To().String()
-			//gas := tx.Gas()
-			//gasPrice := tx.GasPrice().Uint64()
-			//txValue := tx.Value().Uint64()
+			hash := tx.Hash().String()
+			nonce := tx.Nonce()
+			to := tx.To().String()
+			gas := tx.Gas()
+			gasPrice := tx.GasPrice().Uint64()
+			txValue := tx.Value().Uint64()
 
-			//transaction := models.Transaction{
-			//	Hash:     hash,
-			//	Value:    txValue,
-			//	Gas:      gas,
-			//	GasPrice: gasPrice,
-			//	Nonce:    nonce,
-			//	To:       to,
-			//	Pending:  false,
-			//	Data:     txData,
-			//}
+			transaction := models.Transaction{
+				Hash:     hash,
+				Value:    txValue,
+				Gas:      gas,
+				GasPrice: gasPrice,
+				Nonce:    nonce,
+				To:       to,
+				Pending:  false,
+				Data:     txData,
+			}
 			err, msg := createMsg(client, tx)
 
 			msgTo := msg.To().String()
@@ -93,7 +93,7 @@ func ExtractBlock(client *ethclient.Client, block types.Block) {
 				logs[i] = l
 			}
 
-			fmt.Printf("Transaction from %s to %s value %d", message.From, message.To, message.Value)
+			fmt.Printf("Transaction %s from %s to %s value %d", transaction.Hash, message.From, message.To, message.Value)
 		} else if consts.ContainsAddLiquidityMethod(txData) {
 			fmt.Println("TRANSACTION  ADD LIQUIDUTY ")
 			fmt.Print("HASH ")
